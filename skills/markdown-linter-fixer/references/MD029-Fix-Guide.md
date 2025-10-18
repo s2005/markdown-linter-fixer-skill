@@ -226,9 +226,8 @@ npm install
 ```
 
 3. Run the application  <!-- MD029 error here -->
-```
 
-### After (MD029 errors fixed):
+### After (MD029 errors fixed)
 
 ```markdown
 1. Clone the repository
@@ -248,7 +247,6 @@ npm install
     ```bash
     npm start
     ```
-```
 
 ## Verification
 
