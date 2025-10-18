@@ -5,6 +5,22 @@ All notable changes to the Markdown Linter Fixer skill will be documented in thi
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.3.3] - 2025-10-18
+
+### Changed in 1.3.3
+
+- Enhanced configuration policy with precise guidelines:
+  - Do not ignore/hide linting errors by modifying `.markdownlint-cli2.jsonc`
+  - Only modify `ignores` array based on explicit user input or `.gitignore` content
+  - Never suppress errors without user consent - fix them instead
+- Updated SKILL.md with comprehensive configuration policy section
+- Added "md" tag to marketplace.json for better discoverability
+
+### Improved in 1.3.3
+
+- Updated MD029-Fix-Guide.md with simpler, more general examples (git/npm workflow instead of ansible-specific commands)
+- Real-world example now shows common installation steps that are more relatable for general users
+
 ## [1.3.2] - 2025-10-18
 
 ### Changed in 1.3.2
@@ -139,6 +155,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Version History Summary
 
+- **1.3.3** - Precise configuration policy: never hide errors, only use .gitignore or user-approved ignores
 - **1.3.2** - Enhanced configuration management with user approval requirement for ignores array
 - **1.3.1** - Fixed plugin manifest configuration for proper skill visibility
 - **1.3.0** - Configuration improvements and MD036 documentation

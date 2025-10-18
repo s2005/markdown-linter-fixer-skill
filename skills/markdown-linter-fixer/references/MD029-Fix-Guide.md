@@ -208,33 +208,45 @@ code here
 
 ## Real-World Example
 
-Here's how we fixed the original README.md file:
+Here's a common scenario showing how proper indentation fixes MD029 errors:
 
 ### Before (with MD029 errors):
 
 ```markdown
-1. to drop all database objects:
+1. Clone the repository
 
 ```bash
-ansible-playbook import_meta_dumps.yml --tags cleanup_schemas
+git clone https://github.com/example/project.git
 ```
 
-2. to reset password only:  <!-- MD029 error here -->
+2. Install dependencies  <!-- MD029 error here -->
 
-```text
+```bash
+npm install
+```
+
+3. Run the application  <!-- MD029 error here -->
+```
 
 ### After (MD029 errors fixed):
+
 ```markdown
-1. to drop all database objects:
+1. Clone the repository
 
     ```bash
-    ansible-playbook import_meta_dumps.yml --tags cleanup_schemas
+    git clone https://github.com/example/project.git
     ```
 
-2. to reset password only:  <!-- No error -->
+2. Install dependencies  <!-- No error -->
 
     ```bash
-    ansible-playbook import_meta_dumps.yml --tags reset_password
+    npm install
+    ```
+
+3. Run the application  <!-- No error -->
+
+    ```bash
+    npm start
     ```
 ```
 
