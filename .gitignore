@@ -55,3 +55,6 @@ htmlcov/
 
 # Skill packaging
 *.zip.tmp
+
+# Tasks in progress
+docs/tasks/
