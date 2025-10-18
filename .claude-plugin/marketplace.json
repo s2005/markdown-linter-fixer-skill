@@ -1,0 +1,19 @@
+{
+  "name": "markdown-linter-fixer-marketplace",
+  "description": "Marketplace for markdown linting and fixing plugins for Claude Code",
+  "owner": {
+    "name": "s2005",
+    "email": "s2005@users.noreply.github.com",
+    "url": "https://github.com/s2005"
+  },
+  "repository": "https://github.com/s2005/markdown-linter-fixer-skill",
+  "plugins": [
+    {
+      "name": "markdown-linter-fixer",
+      "source": "./",
+      "description": "Systematically fix linting issues in markdown files using markdownlint-cli2. Provides structured workflows to diagnose, fix, and verify markdown formatting issues with special focus on MD029 errors.",
+      "version": "1.2.0",
+      "tags": ["markdown", "linter", "formatting", "documentation", "md029"]
+    }
+  ]
+}

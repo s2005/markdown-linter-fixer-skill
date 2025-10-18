@@ -28,24 +28,67 @@ Markdown linting errors are common in documentation, especially when combining:
 
 The **MD029 error** (ordered list item prefix) is particularly common and confusing. This skill includes a comprehensive guide explaining the root cause: **improper indentation** of content between list items, not just numbering inconsistencies.
 
+## Quick Links
+
+- **[Installation & Troubleshooting Guide](INSTALLATION.md)** - Complete installation guide with troubleshooting
+- **[Plugin Documentation](PLUGIN.md)** - Plugin-specific features and configuration
+- **[Changelog](CHANGELOG.md)** - Version history and release notes
+
 ## Installation
 
-### Using Claude.ai, Claude Code, or Claude API
+### Option 1: Claude Code Plugin via Marketplace (Recommended)
+
+Install from the marketplace in Claude Code:
+
+```bash
+# Add the marketplace
+/plugin marketplace add https://github.com/s2005/markdown-linter-fixer-skill
+
+# Install the plugin
+/plugin install markdown-linter-fixer@markdown-linter-fixer-marketplace
+```
+
+Or use the interactive plugin menu:
+
+```bash
+# Open the plugin management interface
+/plugin
+
+# Select "Browse Plugins" and install markdown-linter-fixer
+```
+
+### Option 2: Local Development Installation
+
+For testing or development:
+
+```bash
+# Clone the repository
+git clone https://github.com/s2005/markdown-linter-fixer-skill.git
+
+# Add as a local marketplace
+/plugin marketplace add ./markdown-linter-fixer-skill
+
+# Install the plugin
+/plugin install markdown-linter-fixer@markdown-linter-fixer-marketplace
+```
+
+The plugin manifest (`.claude-plugin/plugin.json`) and marketplace configuration (`.claude-plugin/marketplace.json`) configure the agent automatically.
+
+### Option 3: Manual Installation (Claude.ai/Desktop/API)
 
 1. Download the [latest release](../../releases/latest) or clone this repository
 2. Package the skill:
 
    ```bash
-   cd markdown-linter-fixer
-   zip -r markdown-linter-fixer.zip SKILL.md references/
+   cd skills/markdown-linter-fixer
+   zip -r ../../markdown-linter-fixer.zip SKILL.md references/
    ```
 
 3. Upload to Claude:
    - **Claude.ai/Desktop**: Settings → Profile → Skills → Upload Custom Skill
-   - **Claude Code**: Use plugin system
    - **Claude API**: Use Skills API endpoint
 
-For detailed installation instructions, see [Using skills in Claude](https://support.claude.com/en/articles/12512180-using-skills-in-claude).
+For detailed installation and troubleshooting instructions, see [INSTALLATION.md](INSTALLATION.md) or the official guide at [Using skills in Claude](https://support.claude.com/en/articles/12512180-using-skills-in-claude).
 
 ### Prerequisites
 
@@ -95,13 +138,22 @@ I have ordered list numbering issues in my markdown files with code blocks
 Scan all markdown files and create a report of issues
 ```
 
-## Skill Structure
+## Plugin Structure
 
 ```tree
-markdown-linter-fixer/
-├── SKILL.md                    # Main skill instructions
-└── references/
-    └── MD029-Fix-Guide.md      # Detailed MD029 indentation guide
+.
+├── .claude-plugin/
+│   ├── plugin.json                 # Plugin manifest
+│   └── marketplace.json            # Marketplace catalog
+├── skills/                         # Skills directory
+│   └── markdown-linter-fixer/      # Skill directory
+│       ├── SKILL.md                # Main skill instructions
+│       └── references/
+│           └── MD029-Fix-Guide.md  # Detailed MD029 indentation guide
+├── examples/                       # Example files
+├── PLUGIN.md                       # Plugin documentation
+├── README.md                       # This file
+└── LICENSE                         # MIT License
 ```
 
 ### Progressive Disclosure Design
@@ -185,9 +237,10 @@ This disables the max line length rule while keeping other formatting checks act
 git clone https://github.com/s2005/markdown-linter-fixer-skill.git
 cd markdown-linter-fixer-skill
 
-# The skill is ready to use
-cd markdown-linter-fixer
-zip -r ../markdown-linter-fixer.zip SKILL.md references/
+# The plugin is ready to use - skill is at skills/markdown-linter-fixer/
+# For manual installation, package just the skill:
+cd skills/markdown-linter-fixer
+zip -r ../../markdown-linter-fixer.zip SKILL.md references/
 ```
 
 ### Testing the Skill
@@ -272,6 +325,6 @@ Special thanks to:
 
 ---
 
-**Version**: 1.1  
-**Last Updated**: October 17, 2025  
-**Compatibility**: Claude Sonnet 4 and higher with code execution enabled
+**Version**: 1.2.0
+**Last Updated**: October 18, 2025
+**Compatibility**: Claude Code, Claude Sonnet 4 and higher with code execution enabled

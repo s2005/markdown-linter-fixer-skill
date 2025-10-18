@@ -1,0 +1,28 @@
+{
+  "name": "markdown-linter-fixer",
+  "version": "1.2.0",
+  "description": "Systematically fix linting issues in markdown files using markdownlint-cli2. This skill provides structured workflows to diagnose, fix, and verify markdown formatting issues with special focus on MD029 errors.",
+  "author": {
+    "name": "s2005",
+    "email": "s2005@users.noreply.github.com",
+    "url": "https://github.com/s2005"
+  },
+  "homepage": "https://github.com/s2005/markdown-linter-fixer-skill",
+  "repository": "https://github.com/s2005/markdown-linter-fixer-skill",
+  "license": "MIT",
+  "keywords": [
+    "markdown",
+    "linter",
+    "markdownlint",
+    "formatting",
+    "md029",
+    "documentation",
+    "agent-skill"
+  ],
+  "skills": [
+    {
+      "name": "markdown-linter-fixer",
+      "path": "skills/markdown-linter-fixer"
+    }
+  ]
+}

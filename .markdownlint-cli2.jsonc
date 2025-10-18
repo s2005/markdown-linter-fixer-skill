@@ -1,0 +1,8 @@
+{
+  "config": {
+    "MD013": false
+  },
+  "ignores": [
+    "examples/with-md029-errors.md"
+  ]
+}
