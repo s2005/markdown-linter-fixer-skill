@@ -1,6 +1,6 @@
 {
   "name": "markdown-linter-fixer",
-  "version": "1.3.1",
+  "version": "1.3.2",
   "description": "Systematically fix linting issues in markdown files using markdownlint-cli2. This skill provides structured workflows to diagnose, fix, and verify markdown formatting issues with special focus on MD029 errors.",
   "author": {
     "name": "s2005",

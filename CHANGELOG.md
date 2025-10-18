@@ -5,6 +5,13 @@ All notable changes to the Markdown Linter Fixer skill will be documented in thi
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.3.2] - 2025-10-18
+
+### Changed in 1.3.2
+
+- Updated SKILL.md to require explicit user approval before modifying `ignores` array in `.markdownlint-cli2.jsonc`
+- Added important note about not modifying file ignore list without user consent
+
 ## [1.3.1] - 2025-10-18
 
 ### Fixed in 1.3.1
@@ -132,6 +139,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Version History Summary
 
+- **1.3.2** - Enhanced configuration management with user approval requirement for ignores array
 - **1.3.1** - Fixed plugin manifest configuration for proper skill visibility
 - **1.3.0** - Configuration improvements and MD036 documentation
 - **1.2.0** - Plugin structure with marketplace support
