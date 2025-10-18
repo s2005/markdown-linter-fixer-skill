@@ -292,7 +292,7 @@ Releases are managed by maintainers:
 1. Version bump in README.md
 2. Update CHANGELOG.md (if exists)
 3. Create GitHub release with packaged skill
-4. Tag with semantic version (e.g., v1.2.0)
+4. Tag with semantic version (e.g., v1.3.1)
 
 ## Recognition
 

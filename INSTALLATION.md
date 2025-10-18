@@ -287,7 +287,7 @@ skills/
 ```json
 {
   "name": "markdown-linter-fixer",
-  "version": "1.2.0",
+  "version": "1.3.1",
   "skills": [
     {
       "name": "markdown-linter-fixer",
@@ -435,5 +435,5 @@ Use these phrases to trigger the skill:
 
 ---
 
-**Version:** 1.2.0
+**Version:** 1.3.1
 **Last Updated:** October 18, 2025

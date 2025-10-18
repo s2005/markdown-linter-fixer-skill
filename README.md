@@ -325,6 +325,6 @@ Special thanks to:
 
 ---
 
-**Version**: 1.2.0
+**Version**: 1.3.1
 **Last Updated**: October 18, 2025
 **Compatibility**: Claude Code, Claude Sonnet 4 and higher with code execution enabled

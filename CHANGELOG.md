@@ -5,6 +5,20 @@ All notable changes to the Markdown Linter Fixer skill will be documented in thi
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.3.1] - 2025-10-18
+
+### Fixed in 1.3.1
+
+- Plugin manifest configuration to include `skills` array in marketplace.json
+- Skills array format in plugin.json (changed from object array to string array)
+- Plugin visibility issue - skill now properly appears in Claude Code available skills list
+- Added `strict: false` flag to marketplace.json plugin configuration
+
+### Changed in 1.3.1
+
+- Updated marketplace.json to follow Anthropic plugin structure with explicit skills paths
+- Simplified plugin.json skills format to use string array instead of object array
+
 ## [1.3.0] - 2025-10-18
 
 ### Added in 1.3.0
@@ -118,6 +132,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Version History Summary
 
+- **1.3.1** - Fixed plugin manifest configuration for proper skill visibility
 - **1.3.0** - Configuration improvements and MD036 documentation
 - **1.2.0** - Plugin structure with marketplace support
 - **1.1.0** - Enhanced MD029 guide with indentation focus
