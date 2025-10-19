@@ -22,7 +22,9 @@ The skill is automatically activated when users:
 
 ## Installation
 
-### Via Marketplace (Recommended)
+For complete installation instructions, see [INSTALLATION.md](INSTALLATION.md).
+
+**Quick start:**
 
 ```bash
 # Add the marketplace
@@ -30,31 +32,9 @@ The skill is automatically activated when users:
 
 # Install the plugin
 /plugin install markdown-linter-fixer@markdown-linter-fixer-marketplace
+
+# Restart Claude Code
 ```
-
-### Via Interactive Menu
-
-```bash
-# Open the plugin interface
-/plugin
-
-# Select "Browse Plugins" → markdown-linter-fixer → Install
-```
-
-### For Local Development
-
-```bash
-# Clone the repository
-git clone https://github.com/s2005/markdown-linter-fixer-skill.git
-
-# Add as local marketplace
-/plugin marketplace add ./markdown-linter-fixer-skill
-
-# Install the plugin
-/plugin install markdown-linter-fixer@markdown-linter-fixer-marketplace
-```
-
-After installation, restart Claude Code to activate the plugin.
 
 ## Usage
 
@@ -73,6 +53,51 @@ I have ordered list numbering issues in my markdown files
 ```
 
 Claude will invoke the skill automatically and follow the structured workflow to diagnose, fix, and verify markdown issues.
+
+### Slash Command
+
+The plugin provides a unified slash command for markdown linting:
+
+**Command Format:**
+
+```bash
+/mdlinter [mode] [scope]
+```
+
+**Arguments:**
+
+- `mode` (optional): Either `check` or `fix`
+  - `check` - Scan and report issues without making changes (DEFAULT)
+  - `fix` - Scan and automatically fix all issues
+  - If not specified or invalid, safely defaults to `check` mode
+- `scope` (optional): Target file(s), folder, or pattern. Defaults to all markdown files in the project.
+
+**Examples:**
+
+```bash
+# Check all files (default mode)
+/mdlinter
+
+# Explicitly check all files
+/mdlinter check
+
+# Fix all files
+/mdlinter fix
+
+# Check only README.md (default mode)
+/mdlinter README.md
+
+# Explicitly check only README.md
+/mdlinter check README.md
+
+# Fix files in docs folder
+/mdlinter fix docs/
+
+# Check multiple specific files
+/mdlinter check README.md CONTRIBUTING.md
+```
+
+The check mode is useful for CI/CD pipelines or pre-commit checks, while fix mode runs the complete workflow to resolve all issues. For safety, the command always defaults to check mode when mode is not specified.
 
 ## Features
 
@@ -178,7 +203,7 @@ If you get an error when adding the marketplace:
 /plugin marketplace add https://github.com/s2005/markdown-linter-fixer-skill
 
 # For local directory (use absolute path)
-/plugin marketplace add D:/mcp/claude/markdown-linter-fixer-skill
+/plugin marketplace add /path/to/markdown-linter-fixer-skill
 ```
 
 Make sure:
@@ -327,17 +352,20 @@ If Claude reports skill files are missing:
 
 ## Uninstalling
 
-```bash
-# Disable the plugin
-/plugin disable markdown-linter-fixer@markdown-linter-fixer-marketplace
+For complete uninstallation instructions including workarounds for a known bug, see [INSTALLATION.md](INSTALLATION.md#uninstalling).
 
-# Or completely remove it
-/plugin uninstall markdown-linter-fixer@markdown-linter-fixer-marketplace
+**Quick reference:**
+
+```bash
+claude plugin uninstall markdown-linter-fixer@markdown-linter-fixer-marketplace
+claude plugin marketplace remove markdown-linter-fixer-marketplace
+
+# IMPORTANT: Manual cleanup required - see INSTALLATION.md for details
 ```
 
 ## Version
 
-**Current Version**: 1.3.1
+**Current Version**: 1.4.0
 
 ## License
 

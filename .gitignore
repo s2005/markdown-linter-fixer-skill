@@ -19,8 +19,8 @@ Desktop.ini
 *.swo
 *~
 
-# Claude settings
-.claude/settings.local.json
+# Claude settings (local development only, not for distribution)
+.claude/
 
 # Python
 __pycache__/

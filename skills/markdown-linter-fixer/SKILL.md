@@ -67,6 +67,7 @@ If none exist, create `.markdownlint-cli2.jsonc` with:
 This disables max line length warnings while keeping other rules active. The `ignores` array can be used to exclude specific files from linting (e.g., example files with intentional errors).
 
 **IMPORTANT - Configuration Policy**:
+
 - **Do not ignore/hide linting errors** by modifying `.markdownlint-cli2.jsonc`
 - **Only modify the `ignores` array** based on:
   - Explicit user input or approval

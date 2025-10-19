@@ -181,6 +181,176 @@ Test your changes by:
    - MD029-specific problems
    - Edge cases and error handling
 
+### CLI Commands for Testing
+
+Use these Claude Code CLI commands for repeated testing of marketplace and plugin management:
+
+#### Marketplace Management
+
+**Add marketplace (from GitHub):**
+
+```bash
+claude plugin marketplace add https://github.com/s2005/markdown-linter-fixer-skill
+```
+
+**Add marketplace (local development):**
+
+```bash
+# From within the plugin directory
+claude plugin marketplace add ./
+```
+
+**List configured marketplaces:**
+
+```bash
+claude plugin marketplace list
+```
+
+**Update marketplace(s):**
+
+```bash
+# Update specific marketplace
+claude plugin marketplace update markdown-linter-fixer-marketplace
+
+# Update all marketplaces
+claude plugin marketplace update
+```
+
+**Remove marketplace:**
+
+```bash
+claude plugin marketplace remove markdown-linter-fixer-marketplace
+```
+
+#### Plugin Management
+
+For complete installation and uninstallation instructions, see [INSTALLATION.md](INSTALLATION.md).
+
+**Quick commands:**
+
+```bash
+# Install
+claude plugin install markdown-linter-fixer@markdown-linter-fixer-marketplace
+
+# Uninstall (see INSTALLATION.md for complete steps including manual cleanup)
+claude plugin uninstall markdown-linter-fixer@markdown-linter-fixer-marketplace
+
+# Enable/disable
+claude plugin enable markdown-linter-fixer@markdown-linter-fixer-marketplace
+claude plugin disable markdown-linter-fixer@markdown-linter-fixer-marketplace
+```
+
+**Validate plugin structure:**
+
+```bash
+# Validate plugin manifest
+claude plugin validate ./
+
+# Validate marketplace manifest
+claude plugin validate ./.claude-plugin/marketplace.json
+```
+
+#### Verification Commands
+
+**Check marketplace installation:**
+
+```bash
+ls -la ~/.claude/plugins/marketplaces/
+cat ~/.claude/plugins/known_marketplaces.json
+```
+
+**Check plugin configuration:**
+
+```bash
+cat ~/.claude/plugins/config.json
+```
+
+**Check project-level settings:**
+
+```bash
+cat ./.claude/settings.local.json
+```
+
+#### Testing Local Changes
+
+When developing and testing changes to the plugin:
+
+**Initial Setup:**
+
+```bash
+# 1. Add your local directory as a marketplace
+claude plugin marketplace add ./
+
+# 2. Install the plugin
+claude plugin install markdown-linter-fixer@markdown-linter-fixer-marketplace
+
+# 3. Restart Claude Code
+```
+
+**Iterative Development Workflow:**
+
+After making changes to skill files, plugin manifests, or slash commands:
+
+```bash
+# Method 1: Update marketplace (picks up file changes)
+claude plugin marketplace update markdown-linter-fixer-marketplace
+
+# Method 2: Reinstall plugin (full refresh)
+claude plugin uninstall markdown-linter-fixer@markdown-linter-fixer-marketplace
+claude plugin install markdown-linter-fixer@markdown-linter-fixer-marketplace
+
+# Then restart Claude Code to load changes
+```
+
+**Quick Testing Cycle:**
+
+```bash
+# 1. Make changes to SKILL.md or other files
+
+# 2. Update the marketplace
+claude plugin marketplace update markdown-linter-fixer-marketplace
+
+# 3. Restart Claude Code (required for changes to take effect)
+
+# 4. Test your changes with /mdlinter or by invoking the skill
+
+# 5. Repeat steps 1-4 as needed
+```
+
+**Important Notes:**
+
+- Changes to skill files require **restarting Claude Code** to take effect
+- Use `claude plugin marketplace update` for quick iterations
+- Use full reinstall if marketplace update doesn't pick up changes
+- After changing plugin manifests (plugin.json, marketplace.json), always reinstall
+
+#### Complete Test Workflow
+
+For a full test cycle of installation/uninstallation (first time setup or final verification):
+
+```bash
+# 1. Add marketplace
+claude plugin marketplace add ./
+
+# 2. Verify marketplace was added
+claude plugin marketplace list
+
+# 3. Install plugin
+claude plugin install markdown-linter-fixer@markdown-linter-fixer-marketplace
+
+# 4. Test the plugin (run Claude Code and test /mdlinter commands)
+
+# 5. Uninstall (when testing is complete)
+# See INSTALLATION.md for complete uninstallation steps including manual cleanup
+claude plugin uninstall markdown-linter-fixer@markdown-linter-fixer-marketplace
+claude plugin marketplace remove markdown-linter-fixer-marketplace
+# Then manually clean ~/.claude/settings.json (see INSTALLATION.md)
+
+# 6. Verify cleanup
+claude plugin marketplace list
+ls -la ~/.claude/plugins/marketplaces/
+```
+
 ### Test Cases
 
 Ensure your changes work with:

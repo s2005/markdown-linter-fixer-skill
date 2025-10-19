@@ -5,6 +5,52 @@ All notable changes to the Markdown Linter Fixer skill will be documented in thi
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.4.0] - 2025-10-19
+
+### Added in 1.4.0
+
+- Comprehensive CLI testing commands section in CONTRIBUTING.md with:
+  - Marketplace management commands (add, list, update, remove)
+  - Plugin management commands (install, uninstall, enable, disable)
+  - Verification commands for checking installation status
+  - Complete testing workflow documentation
+  - Iterative development workflow guidance
+- Testing local changes section in INSTALLATION.md
+- Slash command documentation in README.md and PLUGIN.md with:
+  - Command format and argument descriptions
+  - Usage examples for check and fix modes
+  - Scope-based targeting (files, folders, patterns)
+- `/mdlinter` slash command in `./commands/mdlinter.md`
+  - Users automatically get the command when installing the plugin
+  - Supports both `check` (scan only, by default) and `fix` (scan and repair) modes
+  - Optional scope parameter for targeting specific files or folders
+  - **Safety-first design**: Mode is optional and defaults to `check` when not specified or invalid
+  - Examples: `/mdlinter` (check all), `/mdlinter README.md` (check specific file)
+
+### Fixed in 1.4.0
+
+- Marketplace manifest validation warning:
+  - Restructured marketplace.json to use `metadata.description` instead of root-level `description`
+  - Plugin now validates cleanly with `claude plugin validate`
+
+### Enhanced in 1.4.0
+
+- Uninstallation documentation with:
+  - Complete step-by-step uninstall process
+  - Known bug workaround for settings.json cleanup ([issue #9537](https://github.com/anthropics/claude-code/issues/9537))
+  - Manual cleanup instructions for all affected configuration files
+  - Temporary disable alternative
+- Installation sections streamlined in README.md and PLUGIN.md for better clarity
+- Cross-references added between documentation files
+- `.gitignore` updated to exclude `.claude/` directory (local development settings)
+
+### Improved in 1.4.0
+
+- Better developer experience with detailed CLI command reference
+- Clearer guidance for local development and testing iterations
+- More comprehensive troubleshooting with uninstallation workarounds
+- Enhanced documentation structure with better navigation
+
 ## [1.3.3] - 2025-10-18
 
 ### Changed in 1.3.3
@@ -155,6 +201,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Version History Summary
 
+- **1.4.0** - Documentation enhancements: CLI testing commands, slash command docs, uninstallation workarounds
 - **1.3.3** - Precise configuration policy: never hide errors, only use .gitignore or user-approved ignores
 - **1.3.2** - Enhanced configuration management with user approval requirement for ignores array
 - **1.3.1** - Fixed plugin manifest configuration for proper skill visibility

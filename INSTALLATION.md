@@ -65,13 +65,26 @@ Look for "markdown-linter-fixer" in the enabled plugins list.
 git clone https://github.com/s2005/markdown-linter-fixer-skill.git
 
 # Add local marketplace (use absolute path)
-/plugin marketplace add D:/path/to/markdown-linter-fixer-skill
+/plugin marketplace add /path/to/markdown-linter-fixer-skill
 
 # Install plugin
 /plugin install markdown-linter-fixer@markdown-linter-fixer-marketplace
 
 # Restart Claude Code
 ```
+
+**Testing local changes after editing files:**
+
+When you modify skill files or plugin manifests, you need to update the marketplace and restart Claude Code:
+
+```bash
+# Update marketplace to pick up your changes
+claude plugin marketplace update markdown-linter-fixer-marketplace
+
+# Restart Claude Code (required for changes to take effect)
+```
+
+For complete testing workflows and iterative development cycles, see [CONTRIBUTING.md](CONTRIBUTING.md#testing-local-changes).
 
 ## Prerequisites
 
@@ -127,7 +140,7 @@ markdownlint-cli2 --version
 2. For local paths, use absolute paths:
 
    ```bash
-   /plugin marketplace add D:/full/path/to/markdown-linter-fixer-skill
+   /plugin marketplace add /full/path/to/markdown-linter-fixer-skill
    ```
 
 3. Ensure the repository has `.claude-plugin/marketplace.json`
@@ -275,11 +288,14 @@ npm install -g markdownlint-cli2
 .claude-plugin/
   ├── plugin.json
   └── marketplace.json
+commands/
+  └── mdlinter.md
 skills/
   └── markdown-linter-fixer/
       ├── SKILL.md
       └── references/
-          └── MD029-Fix-Guide.md
+          ├── MD029-Fix-Guide.md
+          └── MD036-Guide.md
 ```
 
 **Verify plugin.json:**
@@ -287,7 +303,7 @@ skills/
 ```json
 {
   "name": "markdown-linter-fixer",
-  "version": "1.3.1",
+  "version": "1.4.0",
   "skills": [
     {
       "name": "markdown-linter-fixer",
@@ -349,22 +365,60 @@ Team members who trust the repository folder will automatically:
 
 ## Uninstalling
 
-### Disable Temporarily
+### Complete Uninstall Steps
+
+```bash
+# Step 1: Disable the plugin
+claude plugin disable markdown-linter-fixer@markdown-linter-fixer-marketplace
+
+# Step 2: Uninstall the plugin
+claude plugin uninstall markdown-linter-fixer@markdown-linter-fixer-marketplace
+
+# Step 3: Remove the marketplace
+claude plugin marketplace remove markdown-linter-fixer-marketplace
+
+# Step 4: Manual cleanup (REQUIRED - see Known Issue below)
+# Edit ~/.claude/settings.json and remove:
+#   - Plugin entry from "enabledPlugins"
+#   - Marketplace from "extraKnownMarketplaces" (if present)
+
+# Step 5: Restart Claude Code
+```
+
+### Known Issue with Uninstallation
+
+**IMPORTANT**: Due to a [known bug](https://github.com/anthropics/claude-code/issues/9537), the plugin uninstall commands do not automatically clean up the `settings.json` configuration file.
+
+**Files to manually edit:**
+
+- `~/.claude/settings.json` (global user settings)
+- `.claude/settings.json` (project settings, if present)
+- `.claude/settings.local.json` (local project settings, if present)
+
+**Remove these entries:**
+
+```json
+"enabledPlugins": {
+  "markdown-linter-fixer@markdown-linter-fixer-marketplace": false  // ← Remove this line
+}
+```
+
+```json
+"extraKnownMarketplaces": [
+  {
+    "name": "markdown-linter-fixer-marketplace"  // ← Remove this entry
+  }
+]
+```
+
+**After manual cleanup**, restart Claude Code.
+
+### Disable Temporarily (Alternative)
+
+If you just want to temporarily disable the plugin without fully uninstalling:
 
 ```bash
 /plugin disable markdown-linter-fixer@markdown-linter-fixer-marketplace
-```
-
-### Remove Completely
-
-```bash
-/plugin uninstall markdown-linter-fixer@markdown-linter-fixer-marketplace
-```
-
-### Remove Marketplace
-
-```bash
-/plugin marketplace remove markdown-linter-fixer-marketplace
 ```
 
 ## Getting Help
@@ -379,15 +433,9 @@ Claude Code logs may contain error details:
 
 ### Report Issues
 
-If you encounter problems:
+For detailed issue reporting guidelines, see the [Support section in README.md](README.md#support).
 
-1. **Check existing issues:** [GitHub Issues](https://github.com/s2005/markdown-linter-fixer-skill/issues)
-2. **Create new issue** with:
-   - Your operating system
-   - Claude Code version
-   - Steps to reproduce
-   - Error messages or logs
-   - What you expected vs what happened
+Quick link: [GitHub Issues](https://github.com/s2005/markdown-linter-fixer-skill/issues)
 
 ### Documentation
 
@@ -435,5 +483,5 @@ Use these phrases to trigger the skill:
 
 ---
 
-**Version:** 1.3.1
-**Last Updated:** October 18, 2025
+**Version:** 1.4.0
+**Last Updated:** October 19, 2025

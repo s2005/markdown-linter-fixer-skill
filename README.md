@@ -36,9 +36,7 @@ The **MD029 error** (ordered list item prefix) is particularly common and confus
 
 ## Installation
 
-### Option 1: Claude Code Plugin via Marketplace (Recommended)
-
-Install from the marketplace in Claude Code:
+**Quick start for Claude Code:**
 
 ```bash
 # Add the marketplace
@@ -46,49 +44,19 @@ Install from the marketplace in Claude Code:
 
 # Install the plugin
 /plugin install markdown-linter-fixer@markdown-linter-fixer-marketplace
+
+# Restart Claude Code
 ```
 
-Or use the interactive plugin menu:
+**For complete installation instructions**, including:
 
-```bash
-# Open the plugin management interface
-/plugin
+- Local development setup
+- Team deployment
+- Manual installation (Claude.ai/Desktop/API)
+- Troubleshooting
+- Uninstallation with known bug workarounds
 
-# Select "Browse Plugins" and install markdown-linter-fixer
-```
-
-### Option 2: Local Development Installation
-
-For testing or development:
-
-```bash
-# Clone the repository
-git clone https://github.com/s2005/markdown-linter-fixer-skill.git
-
-# Add as a local marketplace
-/plugin marketplace add ./markdown-linter-fixer-skill
-
-# Install the plugin
-/plugin install markdown-linter-fixer@markdown-linter-fixer-marketplace
-```
-
-The plugin manifest (`.claude-plugin/plugin.json`) and marketplace configuration (`.claude-plugin/marketplace.json`) configure the agent automatically.
-
-### Option 3: Manual Installation (Claude.ai/Desktop/API)
-
-1. Download the [latest release](../../releases/latest) or clone this repository
-2. Package the skill:
-
-   ```bash
-   cd skills/markdown-linter-fixer
-   zip -r ../../markdown-linter-fixer.zip SKILL.md references/
-   ```
-
-3. Upload to Claude:
-   - **Claude.ai/Desktop**: Settings → Profile → Skills → Upload Custom Skill
-   - **Claude API**: Use Skills API endpoint
-
-For detailed installation and troubleshooting instructions, see [INSTALLATION.md](INSTALLATION.md) or the official guide at [Using skills in Claude](https://support.claude.com/en/articles/12512180-using-skills-in-claude).
+See **[INSTALLATION.md](INSTALLATION.md)**.
 
 ### Prerequisites
 
@@ -111,6 +79,51 @@ Once installed, Claude automatically activates this skill when you:
 - Request to "scan markdown files"
 - Say "I have ordered list numbering problems"
 - Ask to "set up markdown linting"
+
+### Slash Command
+
+The plugin provides a unified slash command for markdown linting:
+
+**Command Format:**
+
+```bash
+/mdlinter [mode] [scope]
+```
+
+**Arguments:**
+
+- `mode` (optional): Either `check` or `fix`
+  - `check` - Scan and report issues without making changes (DEFAULT)
+  - `fix` - Scan and automatically fix all issues
+  - If not specified or invalid, safely defaults to `check` mode
+- `scope` (optional): Target file(s), folder, or pattern. Defaults to all markdown files in the project.
+
+**Examples:**
+
+```bash
+# Check all files (default mode)
+/mdlinter
+
+# Explicitly check all files
+/mdlinter check
+
+# Fix all files
+/mdlinter fix
+
+# Check only README.md (default mode)
+/mdlinter README.md
+
+# Explicitly check only README.md
+/mdlinter check README.md
+
+# Fix files in docs folder
+/mdlinter fix docs/
+
+# Check multiple specific files
+/mdlinter check README.md CONTRIBUTING.md
+```
+
+The check mode is useful for CI/CD or pre-commit checks, while fix mode runs the complete workflow to resolve all issues. For safety, the command always defaults to check mode when mode is not specified.
 
 ### Example Requests
 
@@ -319,12 +332,28 @@ Special thanks to:
 
 ## Support
 
+### Reporting Issues
+
+If you encounter problems:
+
+1. **Check existing issues:** [GitHub Issues](../../issues)
+2. **Create new issue** with:
+   - Your operating system (Windows/macOS/Linux)
+   - Claude Code version: `claude --version`
+   - Node.js version: `node --version`
+   - markdownlint-cli2 version: `markdownlint-cli2 --version`
+   - Steps to reproduce
+   - Error messages or logs
+   - What you expected vs what happened
+
+### Get Help
+
 - **Issues**: Report bugs or request features via [GitHub Issues](../../issues)
 - **Discussions**: Ask questions in [GitHub Discussions](../../discussions)
 - **Documentation**: See [Claude Skills docs](https://support.claude.com/en/articles/12512180-using-skills-in-claude)
 
 ---
 
-**Version**: 1.3.3
-**Last Updated**: October 18, 2025
+**Version**: 1.4.0
+**Last Updated**: October 19, 2025
 **Compatibility**: Claude Code, Claude Sonnet 4 and higher with code execution enabled
