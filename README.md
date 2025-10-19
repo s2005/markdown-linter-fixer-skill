@@ -313,8 +313,8 @@ Created following Anthropic's [Agent Skills design pattern](https://www.anthropi
 
 Special thanks to:
 
-- Anthropic for the Skills framework
-- David Anson for markdownlint-cli2
+- Anthropic for the [Skills framework](https://github.com/anthropics/skills)
+- David Anson for [markdownlint-cli2](https://github.com/DavidAnson/markdownlint-cli2)
 - The CommonMark specification team
 
 ## Support
@@ -325,6 +325,6 @@ Special thanks to:
 
 ---
 
-**Version**: 1.3.1
+**Version**: 1.3.3
 **Last Updated**: October 18, 2025
 **Compatibility**: Claude Code, Claude Sonnet 4 and higher with code execution enabled
