@@ -350,10 +350,10 @@ If you encounter problems:
 
 - **Issues**: Report bugs or request features via [GitHub Issues](../../issues)
 - **Discussions**: Ask questions in [GitHub Discussions](../../discussions)
-- **Documentation**: See [Claude Skills docs](https://support.claude.com/en/articles/12512180-using-skills-in-claude)
+- **Documentation**: See [Claude Skills docs](https://docs.claude.com/en/docs/agents-and-tools/agent-skills/overview)
 
 ---
 
 **Version**: 1.4.0
-**Last Updated**: October 19, 2025
+**Last Updated**: October 20, 2025
 **Compatibility**: Claude Code, Claude Sonnet 4 and higher with code execution enabled
