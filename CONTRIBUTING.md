@@ -64,7 +64,7 @@ When reporting bugs, please include:
 - Clear, descriptive title
 - Steps to reproduce the issue
 - Expected behavior vs actual behavior
-- Claude version and environment (Claude.ai, Claude Code, API)
+- Platform and environment (Claude.ai, Claude Code, VS Code with GitHub Copilot, API)
 - Relevant error messages or screenshots
 - Example markdown files that trigger the issue (if applicable)
 
@@ -87,7 +87,7 @@ What actually happens
 
 **Environment:**
 - Claude version: [e.g., Sonnet 4]
-- Platform: [e.g., Claude.ai, Claude Code]
+- Platform: [e.g., Claude.ai, Claude Code, VS Code with GitHub Copilot]
 - markdownlint-cli2 version: [if applicable]
 
 **Additional Context:**
