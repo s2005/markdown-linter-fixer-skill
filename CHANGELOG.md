@@ -5,6 +5,28 @@ All notable changes to the Markdown Linter Fixer skill will be documented in thi
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.5.0] - 2025-10-21
+
+### Added in 1.5.0
+
+- **VS Code Custom Chat Mode support**:
+  - Added `markdown-linter-fixer.chatmode.md` for GitHub Copilot users
+  - One-click installation buttons for VS Code and VS Code Insiders
+  - Same 6-phase systematic workflow as Claude Code plugin
+  - Natural language commands for markdown linting in VS Code
+- VS Code installation section in README.md with quick install badges
+
+### Enhanced in 1.5.0
+
+- README.md now supports both Claude Code and VS Code users
+- Quick Links section updated to include VS Code Chat Mode Guide
+- Multi-platform availability clearly documented in Overview
+
+### Platform Support
+
+- **Claude Code**: Plugin via marketplace (existing)
+- **VS Code**: Custom chat mode via GitHub Copilot (new)
+
 ## [1.4.0] - 2025-10-19
 
 ### Added in 1.4.0

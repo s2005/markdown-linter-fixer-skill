@@ -1,6 +1,7 @@
 ---
 name: markdown-linter-fixer
 description: Systematically fix linting issues in markdown files using markdownlint-cli2. This skill should be used when needing to scan, diagnose, and fix markdown formatting issues in projects with one or more .md files, with special attention to ordered list numbering (MD029) errors.
+allowed-tools: Bash, Read, Write, Edit, Glob, Grep
 ---
 
 # Markdown Linter Fixer

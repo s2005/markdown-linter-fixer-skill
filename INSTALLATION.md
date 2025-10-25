@@ -1,8 +1,48 @@
 # Installation and Troubleshooting Guide
 
-Quick reference for installing and troubleshooting the Markdown Linter Fixer plugin.
+Quick reference for installing and troubleshooting the Markdown Linter Fixer across different platforms.
 
-## Quick Start
+## Platform-Specific Installation
+
+This skill is available for:
+
+- **VS Code**: Install as a custom chat mode for GitHub Copilot (see [VS Code Installation](#vs-code-installation))
+- **Claude Code**: Install as a plugin via marketplace (see [Claude Code Installation](#claude-code-installation))
+
+## VS Code Installation
+
+### Quick Install
+
+Click one of these buttons to install the custom chat mode:
+
+[![Install in VS Code](https://img.shields.io/badge/VS%20Code-Install-blue?style=for-the-badge&logo=visualstudiocode)](vscode://github-copilot-chat/open?url=https://raw.githubusercontent.com/s2005/markdown-linter-fixer-skill/main/.github/chatmodes/markdown-linter-fixer.chatmode.md) [![Install in VS Code Insiders](https://img.shields.io/badge/VS%20Code%20Insiders-Install-purple?style=for-the-badge&logo=visualstudiocode)](vscode-insiders://github-copilot-chat/open?url=https://raw.githubusercontent.com/s2005/markdown-linter-fixer-skill/main/.github/chatmodes/markdown-linter-fixer.chatmode.md)
+
+### Manual Installation
+
+1. Open VS Code
+2. Open GitHub Copilot Chat
+3. Access Custom Chat Modes settings
+4. Add the chat mode URL: `https://raw.githubusercontent.com/s2005/markdown-linter-fixer-skill/main/.github/chatmodes/markdown-linter-fixer.chatmode.md`
+
+### Using in VS Code
+
+1. Open GitHub Copilot Chat
+2. Select "markdown-linter-fixer" mode from the dropdown
+3. Ask to fix markdown linting errors
+4. Follow the guided workflow
+
+### Prerequisites for VS Code
+
+- VS Code version 1.96 or higher (required for custom chat modes)
+- GitHub Copilot subscription
+- Node.js and npm installed
+- markdownlint-cli2 (installation guided below)
+
+---
+
+## Claude Code Installation
+
+### Quick Start
 
 ### 1. Add the Marketplace
 
@@ -439,8 +479,9 @@ Quick link: [GitHub Issues](https://github.com/s2005/markdown-linter-fixer-skill
 
 ### Documentation
 
-- **Plugin Guide:** [PLUGIN.md](PLUGIN.md)
 - **Main README:** [README.md](README.md)
+- **Claude Code Plugin Guide:** [PLUGIN.md](PLUGIN.md)
+- **VS Code Custom Chat Modes:** [VS Code Docs](https://code.visualstudio.com/docs/copilot/customization/custom-chat-modes)
 - **Claude Code Plugins:** [Official Docs](https://docs.claude.com/en/docs/claude-code/plugins)
 - **Agent Skills:** [Skills Documentation](https://docs.claude.com/en/docs/claude-code/skills)
 
@@ -483,5 +524,5 @@ Use these phrases to trigger the skill:
 
 ---
 
-**Version:** 1.4.0
-**Last Updated:** October 19, 2025
+**Version:** 1.5.0
+**Last Updated:** October 21, 2025

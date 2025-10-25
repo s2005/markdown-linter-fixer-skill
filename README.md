@@ -6,6 +6,11 @@ A Claude Agent Skill that systematically fixes linting issues in markdown files 
 
 This skill provides Claude with structured workflows to diagnose, fix, and verify markdown formatting issues across projects. It focuses on the most common real-world issues, especially MD029 errors caused by improper indentation of content within ordered lists.
 
+**Available for multiple platforms:**
+
+- **Claude Code**: Install as a plugin via marketplace
+- **VS Code**: Install as a custom chat mode for GitHub Copilot
+
 ## What This Skill Does
 
 The Markdown Linter Fixer skill enables Claude to:
@@ -36,6 +41,28 @@ The **MD029 error** (ordered list item prefix) is particularly common and confus
 
 ## Installation
 
+### For VS Code Users (GitHub Copilot Chat)
+
+Install the custom chat mode to use this skill in VS Code with GitHub Copilot:
+
+[![Install in VS Code](https://img.shields.io/badge/VS%20Code-Install-blue?style=for-the-badge&logo=visualstudiocode)](vscode://github-copilot-chat/open?url=https://raw.githubusercontent.com/s2005/markdown-linter-fixer-skill/main/.github/chatmodes/markdown-linter-fixer.chatmode.md) [![Install in VS Code Insiders](https://img.shields.io/badge/VS%20Code%20Insiders-Install-purple?style=for-the-badge&logo=visualstudiocode)](vscode-insiders://github-copilot-chat/open?url=https://raw.githubusercontent.com/s2005/markdown-linter-fixer-skill/main/.github/chatmodes/markdown-linter-fixer.chatmode.md)
+
+**What you get:**
+
+- Markdown linting and fixing workflows directly in VS Code
+- Same 6-phase systematic approach
+- Access via GitHub Copilot Chat interface
+- Works alongside your existing VS Code extensions
+
+**To use after installation:**
+
+1. Open GitHub Copilot Chat in VS Code
+2. Select "markdown-linter-fixer" mode
+3. Ask to fix markdown linting errors or scan your files
+4. Follow the guided workflow
+
+### For Claude Code Users
+
 **Quick start for Claude Code:**
 
 ```bash
@@ -59,6 +86,17 @@ The **MD029 error** (ordered list item prefix) is particularly common and confus
 See **[INSTALLATION.md](INSTALLATION.md)**.
 
 ### Prerequisites
+
+**For VS Code users:**
+
+- VS Code version 1.96 or higher (for custom chat modes support)
+- GitHub Copilot subscription
+
+**For Claude Code users:**
+
+- Claude Code version 2.0.0 or higher (for plugin marketplace support)
+
+**For all platforms:**
 
 The skill requires `markdownlint-cli2` to be installed. Claude will check for it and guide installation if needed:
 
@@ -327,6 +365,7 @@ Created following Anthropic's [Agent Skills design pattern](https://www.anthropi
 Special thanks to:
 
 - Anthropic for the [Skills framework](https://github.com/anthropics/skills)
+- GitHub for [GitHub Copilot](https://github.com/features/copilot) and custom chat modes support
 - David Anson for [markdownlint-cli2](https://github.com/DavidAnson/markdownlint-cli2)
 - The CommonMark specification team
 
@@ -350,10 +389,12 @@ If you encounter problems:
 
 - **Issues**: Report bugs or request features via [GitHub Issues](../../issues)
 - **Discussions**: Ask questions in [GitHub Discussions](../../discussions)
-- **Documentation**: See [Claude Skills docs](https://docs.claude.com/en/docs/agents-and-tools/agent-skills/overview)
+- **Documentation**:
+  - [Claude Skills docs](https://docs.claude.com/en/docs/agents-and-tools/agent-skills/overview)
+  - [VS Code Custom Chat Modes](https://code.visualstudio.com/docs/copilot/customization/custom-chat-modes)
 
 ---
 
-**Version**: 1.4.0
-**Last Updated**: October 20, 2025
-**Compatibility**: Claude Code, Claude Sonnet 4 and higher with code execution enabled
+**Version**: 1.5.0
+**Last Updated**: October 21, 2025
+**Compatibility**: Claude Code (Sonnet 4+), VS Code (GitHub Copilot with custom chat modes)

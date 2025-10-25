@@ -1,5 +1,7 @@
 # Markdown Linter Fixer Plugin
 
+> **Note**: This document covers the Claude Code plugin installation. For VS Code installation, see the [VS Code section in README.md](README.md#for-vs-code-users-github-copilot-chat).
+
 A Claude Code plugin that provides systematic markdown linting and fixing capabilities through agent skills.
 
 ## Overview
@@ -365,7 +367,7 @@ claude plugin marketplace remove markdown-linter-fixer-marketplace
 
 ## Version
 
-**Current Version**: 1.4.0
+**Current Version**: 1.5.0
 
 ## License
 
@@ -379,6 +381,8 @@ MIT License - See [LICENSE](LICENSE) file for details.
 
 ## See Also
 
-- [Agent Skills Documentation](https://docs.claude.com/en/docs/claude-code/skills)
-- [Plugin Marketplaces](https://docs.claude.com/en/docs/claude-code/plugin-marketplaces)
-- [markdownlint-cli2](https://github.com/DavidAnson/markdownlint-cli2)
+- [VS Code Installation Guide](README.md#for-vs-code-users-github-copilot-chat) - For VS Code users
+- [VS Code Custom Chat Modes](https://code.visualstudio.com/docs/copilot/customization/custom-chat-modes) - VS Code documentation
+- [Agent Skills Documentation](https://docs.claude.com/en/docs/claude-code/skills) - Claude Code skills
+- [Plugin Marketplaces](https://docs.claude.com/en/docs/claude-code/plugin-marketplaces) - Claude Code plugins
+- [markdownlint-cli2](https://github.com/DavidAnson/markdownlint-cli2) - The linting tool
