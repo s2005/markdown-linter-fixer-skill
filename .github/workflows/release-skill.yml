@@ -4,6 +4,12 @@ on:
   release:
     types: [published]
   workflow_dispatch:
+    inputs:
+      create_release:
+        description: 'Create GitHub release'
+        required: false
+        type: boolean
+        default: false
 
 permissions:
   contents: read
@@ -129,16 +135,25 @@ jobs:
           retention-days: 90
       
       - name: Attach skill to release
-        if: github.event_name == 'release'
+        if: github.event_name == 'release' || (github.event_name == 'workflow_dispatch' && inputs.create_release)
         uses: softprops/action-gh-release@v1
         with:
           files: markdown-linter-fixer-skill.zip
-          tag_name: ${{ github.event.release.tag_name }}
+          tag_name: ${{ github.event.release.tag_name || steps.get_version.outputs.version_tag }}
+          name: ${{ github.event.release.name || steps.get_version.outputs.version_tag }}
+          body: |
+            Release of Markdown Linter Fixer Skill version ${{ steps.get_version.outputs.version }}
+            
+            Download `markdown-linter-fixer-skill.zip` and upload to Claude.ai Settings > Capabilities.
+            
+            See `SKILL_INSTALLATION.md` artifact for detailed installation instructions.
+          draft: false
+          prerelease: false
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       
       - name: Generate installation instructions
-        if: github.event_name == 'release'
+        if: github.event_name == 'release' || (github.event_name == 'workflow_dispatch' && inputs.create_release)
         run: |
           cat << 'EOF' > SKILL_INSTALLATION.md
           # Installing the Markdown Linter Fixer Skill in Claude.ai
@@ -244,7 +259,7 @@ jobs:
           echo "Installation instructions generated"
       
       - name: Upload installation instructions
-        if: github.event_name == 'release'
+        if: github.event_name == 'release' || (github.event_name == 'workflow_dispatch' && inputs.create_release)
         uses: actions/upload-artifact@v4
         with:
           name: installation-instructions
