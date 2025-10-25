@@ -1,0 +1,252 @@
+name: Release Skill
+
+on:
+  release:
+    types: [published]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    if: github.event_name == 'release' || github.event_name == 'workflow_dispatch'
+    permissions:
+      contents: write
+      id-token: write
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.release.tag_name || github.ref }}
+      
+      - name: Extract version from marketplace.json
+        id: get_version
+        run: |
+          if [ -f ".claude-plugin/marketplace.json" ]; then
+            VERSION=$(grep -o '"version"[[:space:]]*:[[:space:]]*"[^"]*"' .claude-plugin/marketplace.json | head -1 | sed 's/.*"version"[[:space:]]*:[[:space:]]*"\([^"]*\)".*/\1/')
+            echo "Extracted version: $VERSION"
+            echo "version=$VERSION" >> $GITHUB_OUTPUT
+            echo "version_tag=v$VERSION" >> $GITHUB_OUTPUT
+          else
+            echo "ERROR: .claude-plugin/marketplace.json not found"
+            exit 1
+          fi
+      
+      - name: Verify skill structure
+        run: |
+          echo "Verifying Anthropic skill structure..."
+          
+          # Check for required SKILL.md file
+          if [ ! -f "skills/markdown-linter-fixer/SKILL.md" ]; then
+            echo "ERROR: skills/markdown-linter-fixer/SKILL.md not found"
+            exit 1
+          fi
+          
+          # Verify YAML frontmatter exists
+          if ! head -n 5 skills/markdown-linter-fixer/SKILL.md | grep -q "^---$"; then
+            echo "ERROR: SKILL.md missing YAML frontmatter"
+            exit 1
+          fi
+          
+          # Verify required fields in frontmatter
+          if ! grep -q "^name:" skills/markdown-linter-fixer/SKILL.md; then
+            echo "ERROR: SKILL.md missing 'name' field in frontmatter"
+            exit 1
+          fi
+          
+          if ! grep -q "^description:" skills/markdown-linter-fixer/SKILL.md; then
+            echo "ERROR: SKILL.md missing 'description' field in frontmatter"
+            exit 1
+          fi
+          
+          echo "✓ Skill structure is valid"
+          
+          # Display skill info
+          echo ""
+          echo "Skill contents:"
+          find skills/markdown-linter-fixer -type f | sort
+      
+      - name: Build skill distribution
+        run: |
+          echo "Building skill package for Claude.ai..."
+          echo "Version: ${{ steps.get_version.outputs.version }}"
+          echo "Version tag: ${{ steps.get_version.outputs.version_tag }}"
+          
+          # Create temporary build directory
+          mkdir -p build
+          
+          # Copy skill directory to build location
+          cp -r skills/markdown-linter-fixer build/
+          
+          # Create zip archive from within the build directory
+          # This ensures the zip contains: markdown-linter-fixer/SKILL.md, markdown-linter-fixer/references/*, etc.
+          cd build
+          zip -r ../markdown-linter-fixer-skill.zip markdown-linter-fixer/
+          cd ..
+          
+          # Display archive contents
+          echo ""
+          echo "Archive contents:"
+          unzip -l markdown-linter-fixer-skill.zip
+          
+          # Display archive size
+          echo ""
+          echo "Archive size:"
+          ls -lh markdown-linter-fixer-skill.zip
+      
+      - name: Validate skill archive
+        run: |
+          echo "Validating skill archive..."
+          
+          # Create test extraction directory
+          mkdir -p test-extract
+          cd test-extract
+          
+          # Extract and verify structure
+          unzip -q ../markdown-linter-fixer-skill.zip
+          
+          # Verify the expected structure
+          if [ ! -f "markdown-linter-fixer/SKILL.md" ]; then
+            echo "ERROR: Archive does not contain markdown-linter-fixer/SKILL.md"
+            exit 1
+          fi
+          
+          if [ ! -d "markdown-linter-fixer/references" ]; then
+            echo "ERROR: Archive does not contain markdown-linter-fixer/references/"
+            exit 1
+          fi
+          
+          echo "✓ Archive structure is valid for Claude.ai upload"
+          cd ..
+      
+      - name: Upload skill artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: markdown-linter-fixer-skill-${{ steps.get_version.outputs.version }}
+          path: markdown-linter-fixer-skill.zip
+          retention-days: 90
+      
+      - name: Attach skill to release
+        if: github.event_name == 'release'
+        uses: softprops/action-gh-release@v1
+        with:
+          files: markdown-linter-fixer-skill.zip
+          tag_name: ${{ github.event.release.tag_name }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      
+      - name: Generate installation instructions
+        if: github.event_name == 'release'
+        run: |
+          cat << 'EOF' > SKILL_INSTALLATION.md
+          # Installing the Markdown Linter Fixer Skill in Claude.ai
+          
+          ## What This Skill Does
+          
+          This skill enables Claude to systematically fix linting issues in markdown files using markdownlint-cli2. It provides structured workflows to diagnose, fix, and verify markdown formatting issues with special attention to ordered list numbering (MD029) errors.
+          
+          ## Installation Steps
+          
+          ### Step 1: Download the Skill
+          
+          Download `markdown-linter-fixer-skill.zip` from this release.
+          
+          ### Step 2: Upload to Claude.ai
+          
+          1. Go to [Claude.ai](https://claude.ai/)
+          2. Click on your profile icon in the bottom left
+          3. Select **Settings**
+          4. Navigate to **Capabilities** section
+          5. Click **Upload Skill**
+          6. Select the downloaded `markdown-linter-fixer-skill.zip` file
+          7. Wait for the upload to complete
+          
+          ### Step 3: Enable the Skill and Code Execution
+          
+          After uploading:
+          
+          1. The skill should appear in Settings > Capabilities
+          2. Make sure the skill is enabled (toggled on)
+          3. Ensure **Code Execution** is also enabled in Capabilities
+          4. Skills and code execution are available on Pro, Max, Team, and Enterprise plans
+          
+          ### Step 4: Start Using the Skill
+          
+          The skill activates automatically when you mention markdown linting tasks. Try:
+          
+          - "Fix all markdown linting errors in my project"
+          - "Scan markdown files for issues"
+          - "I have ordered list numbering problems in my markdown files"
+          - "Set up markdown linting for my documentation"
+          
+          ## What's Included
+          
+          The skill package contains:
+          
+          - `SKILL.md` - Main skill instructions with 6-phase workflow
+          - `references/MD029-Fix-Guide.md` - Comprehensive guide for fixing ordered list indentation issues
+          - `references/MD036-Guide.md` - Style guide for avoiding emphasis-as-heading errors
+          
+          ## How It Works
+          
+          The skill automatically handles all dependencies. When you first use it, Claude will:
+          
+          1. Check if `markdownlint-cli2` is available
+          2. Guide you through installation if needed
+          3. Create configuration files if they don't exist
+          4. Run the complete linting and fixing workflow
+          
+          No manual setup required!
+          
+          ## Skill Features
+          
+          - **Environment Setup**: Verifies tools and configuration
+          - **Diagnostic Assessment**: Scans files and documents issues
+          - **Issue Analysis**: Categorizes errors by type
+          - **Automatic Fixes**: Applies auto-fix for correctable issues
+          - **Manual Fix Guidance**: Detailed guides for remaining corrections
+          - **Verification**: Confirms completion and generates reports
+          
+          ## Important Notes
+          
+          - Custom Skills on Claude.ai are **individual to each user**
+          - Skills are **not shared organization-wide** on Claude.ai
+          - Each team member must upload the skill separately
+          - Skills run in a code execution container with no network access
+          - The skill will only modify files with your explicit permission
+          
+          ## Security
+          
+          This skill:
+          - Only reads/writes markdown files
+          - Uses standard npm package (markdownlint-cli2)
+          - Requires explicit permission for file modifications
+          - Provides clear explanations before executing commands
+          - Makes no external network calls (except npm installation)
+          
+          ## Support
+          
+          For issues or questions:
+          - [GitHub Issues](https://github.com/s2005/markdown-linter-fixer-skill/issues)
+          - [GitHub Discussions](https://github.com/s2005/markdown-linter-fixer-skill/discussions)
+          
+          ## Version Information
+          
+          - Version: ${{ steps.get_version.outputs.version }}
+          - Release Tag: ${{ github.event.release.tag_name || steps.get_version.outputs.version_tag }}
+          - Repository: https://github.com/s2005/markdown-linter-fixer-skill
+          - License: MIT
+          
+          EOF
+          
+          echo "Installation instructions generated"
+      
+      - name: Upload installation instructions
+        if: github.event_name == 'release'
+        uses: actions/upload-artifact@v4
+        with:
+          name: installation-instructions
+          path: SKILL_INSTALLATION.md
+          retention-days: 90
