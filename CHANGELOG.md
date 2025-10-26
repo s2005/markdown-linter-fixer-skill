@@ -9,9 +9,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
-- Fixed VS Code installation links to use proper `vscode:chat-mode/install?url=` format
-- Installation links now work as clickable links and properly trigger VS Code chat mode installation
-- Removed manual installation workaround - links now work correctly on GitHub
+- Fixed VS Code installation links to use proper badge + aka.ms redirect pattern
+- Installation buttons now display correctly and trigger VS Code chat mode installation when clicked
+- Links use URL-encoded vscode:chat-mode/install protocol through Microsoft's redirect service
+- Follows official GitHub Copilot awesome-copilot repository pattern
 
 ## [1.5.0] - 2025-10-21
 
