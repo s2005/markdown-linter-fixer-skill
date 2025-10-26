@@ -43,11 +43,21 @@ The **MD029 error** (ordered list item prefix) is particularly common and confus
 
 ### For VS Code Users (GitHub Copilot Chat)
 
-Install the custom chat mode to use this skill in VS Code with GitHub Copilot. Click the links below to open VS Code and install:
+Install the custom chat mode to use this skill in VS Code with GitHub Copilot.
 
-**[Install in VS Code](vscode://github-copilot-chat/open?url=https://raw.githubusercontent.com/s2005/markdown-linter-fixer-skill/main/.github/chatmodes/markdown-linter-fixer.chatmode.md)** | **[Install in VS Code Insiders](vscode-insiders://github-copilot-chat/open?url=https://raw.githubusercontent.com/s2005/markdown-linter-fixer-skill/main/.github/chatmodes/markdown-linter-fixer.chatmode.md)**
+**Installation Links** (copy and paste into your browser, or click if your browser supports `vscode://` links):
 
-> **Note:** These links will open VS Code/VS Code Insiders and prompt you to install the custom chat mode. Make sure you have GitHub Copilot installed and VS Code version 1.96 or higher.
+- **VS Code**: `vscode://github-copilot-chat/open?url=https://raw.githubusercontent.com/s2005/markdown-linter-fixer-skill/main/.github/chatmodes/markdown-linter-fixer.chatmode.md`
+- **VS Code Insiders**: `vscode-insiders://github-copilot-chat/open?url=https://raw.githubusercontent.com/s2005/markdown-linter-fixer-skill/main/.github/chatmodes/markdown-linter-fixer.chatmode.md`
+
+#### Alternative: Manual Installation
+
+1. Download the chat mode file: [markdown-linter-fixer.chatmode.md](.github/chatmodes/markdown-linter-fixer.chatmode.md)
+2. Open VS Code Command Palette (Ctrl/Cmd + Shift + P)
+3. Type "GitHub Copilot: Add Chat Mode"
+4. Select the downloaded file
+
+> **Requirements:** GitHub Copilot subscription and VS Code version 1.96 or higher.
 
 **What you get:**
 

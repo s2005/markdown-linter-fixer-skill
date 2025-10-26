@@ -11,6 +11,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Fixed VS Code installation links to use proper markdown links instead of badge images
 - Installation links now correctly trigger VS Code URI handler for chat mode installation
+- Improved installation instructions with visible URI scheme links and manual installation alternative
+- Fixed MD036 linting error in installation section
 
 ## [1.5.0] - 2025-10-21
 
