@@ -370,6 +370,7 @@ Special thanks to:
 
 - Anthropic for the [Skills framework](https://github.com/anthropics/skills)
 - GitHub for [GitHub Copilot](https://github.com/features/copilot) and custom chat modes support
+- GitHub [awesome-copilot](https://github.com/github/awesome-copilot) repository for [custom chat modes examples and patterns](https://github.com/github/awesome-copilot/blob/main/README.chatmodes.md)
 - David Anson for [markdownlint-cli2](https://github.com/DavidAnson/markdownlint-cli2)
 - The CommonMark specification team
 
