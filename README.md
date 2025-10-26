@@ -397,6 +397,6 @@ If you encounter problems:
 
 ---
 
-**Version**: 1.5.1
+**Version**: 1.5.2
 **Last Updated**: October 26, 2025
 **Compatibility**: Claude Code (Sonnet 4+), VS Code (GitHub Copilot with custom chat modes)

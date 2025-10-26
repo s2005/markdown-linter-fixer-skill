@@ -5,6 +5,25 @@ All notable changes to the Markdown Linter Fixer skill will be documented in thi
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.5.2] - 2025-10-26
+
+### Fixed in 1.5.2
+
+- Fixed VS Code markdown validator errors in chatmode file:
+  - Removed backtick syntax that triggered tool reference detection (line 222)
+  - Converted external GitHub URLs from markdown links to plain text with angle brackets to avoid file path validation errors (lines 323-325)
+- Removed Claude Code-specific "Command Shortcuts" section from VS Code chatmode file
+
+### Improved in 1.5.2
+
+- Better VS Code markdown validator compatibility for chatmode installation
+- Cleaner chatmode file without platform-specific command documentation
+
+### Changed in 1.5.2
+
+- Centralized version management: Version number now maintained only in README.md, plugin.json, marketplace.json, and CHANGELOG.md
+- Removed version references from PLUGIN.md and INSTALLATION.md to simplify maintenance
+
 ## [1.5.1] - 2025-10-26
 
 ### Fixed

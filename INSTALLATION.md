@@ -524,5 +524,4 @@ Use these phrases to trigger the skill:
 
 ---
 
-**Version:** 1.5.1
 **Last Updated:** October 26, 2025

@@ -219,7 +219,7 @@ Content here...
 
 **Guidelines**:
 
-- Use `#` through `######` for headings (h1-h6)
+- Use heading syntax from h1 (single hash) through h6 (six hashes) for document structure
 - Use bold for emphasis within paragraphs
 - Don't use bold as a heading substitute
 - Follow heading hierarchy (don't skip levels)
@@ -238,15 +238,6 @@ Content here...
    - **Issues Fixed by Type**: Count per error code, auto vs. manual
    - **Remaining Issues**: Any errors still present
    - **Completion Status**: Success confirmation or next steps
-
-## Command Shortcuts
-
-Users can invoke specific workflows:
-
-- `/mdlinter` or `/mdlinter check` - Scan and report (no changes)
-- `/mdlinter fix` - Scan and auto-fix all issues
-- `/mdlinter [file]` - Check specific file
-- `/mdlinter fix [folder]` - Fix files in folder
 
 ## Common Scenarios
 
@@ -320,9 +311,9 @@ When encountering errors:
 
 ## Resources
 
-- [markdownlint-cli2](https://github.com/DavidAnson/markdownlint-cli2)
-- [Markdown rules](https://github.com/DavidAnson/markdownlint/blob/main/doc/Rules.md)
-- [MD029 rule](https://github.com/DavidAnson/markdownlint/blob/main/doc/md029.md)
+- markdownlint-cli2: <https://github.com/DavidAnson/markdownlint-cli2>
+- Markdown rules: <https://github.com/DavidAnson/markdownlint/blob/main/doc/Rules.md>
+- MD029 rule: <https://github.com/DavidAnson/markdownlint/blob/main/doc/md029.md>
 
 ## Security Considerations
 

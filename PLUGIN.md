@@ -365,10 +365,6 @@ claude plugin marketplace remove markdown-linter-fixer-marketplace
 # IMPORTANT: Manual cleanup required - see INSTALLATION.md for details
 ```
 
-## Version
-
-**Current Version**: 1.5.1
-
 ## License
 
 MIT License - See [LICENSE](LICENSE) file for details.
