@@ -43,9 +43,11 @@ The **MD029 error** (ordered list item prefix) is particularly common and confus
 
 ### For VS Code Users (GitHub Copilot Chat)
 
-Install the custom chat mode to use this skill in VS Code with GitHub Copilot:
+Install the custom chat mode to use this skill in VS Code with GitHub Copilot. Click the links below to open VS Code and install:
 
-[![Install in VS Code](https://img.shields.io/badge/VS%20Code-Install-blue?style=for-the-badge&logo=visualstudiocode)](vscode://github-copilot-chat/open?url=https://raw.githubusercontent.com/s2005/markdown-linter-fixer-skill/main/.github/chatmodes/markdown-linter-fixer.chatmode.md) [![Install in VS Code Insiders](https://img.shields.io/badge/VS%20Code%20Insiders-Install-purple?style=for-the-badge&logo=visualstudiocode)](vscode-insiders://github-copilot-chat/open?url=https://raw.githubusercontent.com/s2005/markdown-linter-fixer-skill/main/.github/chatmodes/markdown-linter-fixer.chatmode.md)
+**[Install in VS Code](vscode://github-copilot-chat/open?url=https://raw.githubusercontent.com/s2005/markdown-linter-fixer-skill/main/.github/chatmodes/markdown-linter-fixer.chatmode.md)** | **[Install in VS Code Insiders](vscode-insiders://github-copilot-chat/open?url=https://raw.githubusercontent.com/s2005/markdown-linter-fixer-skill/main/.github/chatmodes/markdown-linter-fixer.chatmode.md)**
+
+> **Note:** These links will open VS Code/VS Code Insiders and prompt you to install the custom chat mode. Make sure you have GitHub Copilot installed and VS Code version 1.96 or higher.
 
 **What you get:**
 
@@ -395,6 +397,6 @@ If you encounter problems:
 
 ---
 
-**Version**: 1.5.0
-**Last Updated**: October 21, 2025
+**Version**: 1.5.1
+**Last Updated**: October 26, 2025
 **Compatibility**: Claude Code (Sonnet 4+), VS Code (GitHub Copilot with custom chat modes)
