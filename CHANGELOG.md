@@ -5,6 +5,20 @@ All notable changes to the Markdown Linter Fixer skill will be documented in thi
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.5.3] - 2025-10-26
+
+### Added in 1.5.3
+
+- Link to chat mode definition file before VS Code installation buttons in README.md
+  - Users can now review the chat mode instructions before installation
+  - Ensures transparency and allows users to verify the chat mode is safe to use
+  - Follows the same pattern as GitHub's awesome-copilot repository
+
+### Improved in 1.5.3
+
+- Enhanced installation section with better transparency for VS Code users
+- Added "markdown-linter-fixer mode instructions" link pointing to `.github/chatmodes/markdown-linter-fixer.chatmode.md`
+
 ## [1.5.2] - 2025-10-26
 
 ### Fixed in 1.5.2

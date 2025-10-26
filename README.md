@@ -43,6 +43,8 @@ The **MD029 error** (ordered list item prefix) is particularly common and confus
 
 ### For VS Code Users (GitHub Copilot Chat)
 
+[markdown-linter-fixer mode instructions](.github/chatmodes/markdown-linter-fixer.chatmode.md)
+
 Click the button below to install the custom chat mode in VS Code:
 
 [![Install in VS Code](https://img.shields.io/badge/VS_Code-Install-0098FF?style=flat-square&logo=visualstudiocode&logoColor=white)](https://aka.ms/awesome-copilot/install/chatmode?url=vscode%3Achat-mode%2Finstall%3Furl%3Dhttps%3A%2F%2Fraw.githubusercontent.com%2Fs2005%2Fmarkdown-linter-fixer-skill%2Fmain%2F.github%2Fchatmodes%2Fmarkdown-linter-fixer.chatmode.md) [![Install in VS Code Insiders](https://img.shields.io/badge/VS_Code_Insiders-Install-24bfa5?style=flat-square&logo=visualstudiocode&logoColor=white)](https://aka.ms/awesome-copilot/install/chatmode?url=vscode-insiders%3Achat-mode%2Finstall%3Furl%3Dhttps%3A%2F%2Fraw.githubusercontent.com%2Fs2005%2Fmarkdown-linter-fixer-skill%2Fmain%2F.github%2Fchatmodes%2Fmarkdown-linter-fixer.chatmode.md)
@@ -397,6 +399,6 @@ If you encounter problems:
 
 ---
 
-**Version**: 1.5.2
+**Version**: 1.5.3
 **Last Updated**: October 26, 2025
 **Compatibility**: Claude Code (Sonnet 4+), VS Code (GitHub Copilot with custom chat modes)
