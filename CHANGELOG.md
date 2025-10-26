@@ -5,6 +5,22 @@ All notable changes to the Markdown Linter Fixer skill will be documented in thi
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.5.4] - 2025-10-26
+
+### Changed in 1.5.4
+
+- Updated slash command format from `/mdlinter` to `/markdown-linter-fixer:mdlinter` throughout all documentation
+  - Reflects the actual plugin-prefixed format used in Claude Code
+  - Updated in README.md, PLUGIN.md, CONTRIBUTING.md, and commands/mdlinter.md
+  - All 7 usage examples now show correct format
+  - Historical CHANGELOG entries preserved with original `/mdlinter` format for accuracy
+
+### Improved in 1.5.4
+
+- Better alignment with Claude Code's plugin system conventions
+- Clearer documentation for users on how to invoke the slash command
+- More accurate representation of the actual command format
+
 ## [1.5.3] - 2025-10-26
 
 ### Added in 1.5.3

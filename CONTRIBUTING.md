@@ -312,7 +312,7 @@ claude plugin marketplace update markdown-linter-fixer-marketplace
 
 # 3. Restart Claude Code (required for changes to take effect)
 
-# 4. Test your changes with /mdlinter or by invoking the skill
+# 4. Test your changes with /markdown-linter-fixer:mdlinter or by invoking the skill
 
 # 5. Repeat steps 1-4 as needed
 ```
@@ -338,7 +338,7 @@ claude plugin marketplace list
 # 3. Install plugin
 claude plugin install markdown-linter-fixer@markdown-linter-fixer-marketplace
 
-# 4. Test the plugin (run Claude Code and test /mdlinter commands)
+# 4. Test the plugin (run Claude Code and test /markdown-linter-fixer:mdlinter commands)
 
 # 5. Uninstall (when testing is complete)
 # See INSTALLATION.md for complete uninstallation steps including manual cleanup

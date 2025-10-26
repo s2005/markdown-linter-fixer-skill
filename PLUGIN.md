@@ -63,7 +63,7 @@ The plugin provides a unified slash command for markdown linting:
 **Command Format:**
 
 ```bash
-/mdlinter [mode] [scope]
+/markdown-linter-fixer:mdlinter [mode] [scope]
 ```
 
 **Arguments:**
@@ -78,25 +78,25 @@ The plugin provides a unified slash command for markdown linting:
 
 ```bash
 # Check all files (default mode)
-/mdlinter
+/markdown-linter-fixer:mdlinter
 
 # Explicitly check all files
-/mdlinter check
+/markdown-linter-fixer:mdlinter check
 
 # Fix all files
-/mdlinter fix
+/markdown-linter-fixer:mdlinter fix
 
 # Check only README.md (default mode)
-/mdlinter README.md
+/markdown-linter-fixer:mdlinter README.md
 
 # Explicitly check only README.md
-/mdlinter check README.md
+/markdown-linter-fixer:mdlinter check README.md
 
 # Fix files in docs folder
-/mdlinter fix docs/
+/markdown-linter-fixer:mdlinter fix docs/
 
 # Check multiple specific files
-/mdlinter check README.md CONTRIBUTING.md
+/markdown-linter-fixer:mdlinter check README.md CONTRIBUTING.md
 ```
 
 The check mode is useful for CI/CD pipelines or pre-commit checks, while fix mode runs the complete workflow to resolve all issues. For safety, the command always defaults to check mode when mode is not specified.

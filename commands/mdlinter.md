@@ -6,7 +6,7 @@ description: Check or fix markdown linting issues with optional scope
 
 Use the `markdown-linter-fixer` skill to check or fix markdown linting issues.
 
-**Command format:** `/mdlinter [mode] [scope]`
+**Command format:** `/markdown-linter-fixer:mdlinter [mode] [scope]`
 
 **Arguments:**
 
@@ -23,13 +23,13 @@ Use the `markdown-linter-fixer` skill to check or fix markdown linting issues.
 
 **Examples:**
 
-- `/mdlinter` - check all files (default mode)
-- `/mdlinter check` - explicitly check all files
-- `/mdlinter fix` - fix all files
-- `/mdlinter README.md` - check only README.md (default mode)
-- `/mdlinter check README.md` - explicitly check only README.md
-- `/mdlinter fix docs/` - fix all files in docs folder
-- `/mdlinter check README.md CONTRIBUTING.md` - check specific files
+- `/markdown-linter-fixer:mdlinter` - check all files (default mode)
+- `/markdown-linter-fixer:mdlinter check` - explicitly check all files
+- `/markdown-linter-fixer:mdlinter fix` - fix all files
+- `/markdown-linter-fixer:mdlinter README.md` - check only README.md (default mode)
+- `/markdown-linter-fixer:mdlinter check README.md` - explicitly check only README.md
+- `/markdown-linter-fixer:mdlinter fix docs/` - fix all files in docs folder
+- `/markdown-linter-fixer:mdlinter check README.md CONTRIBUTING.md` - check specific files
 
 **Workflow based on mode:**
 

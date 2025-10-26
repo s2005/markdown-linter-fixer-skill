@@ -102,13 +102,13 @@ See **[INSTALLATION.md](INSTALLATION.md)**.
 
 **For all platforms:**
 
-The skill requires `markdownlint-cli2` to be installed. Claude will check for it and guide installation if needed:
+The skill uses `markdownlint-cli2` under the hood to perform linting and fixes. You don't need to install it beforehand - Claude/VS Code will automatically check for it and guide you through installation if needed:
 
 ```bash
-# Global installation
+# Global installation (if prompted)
 npm install -g markdownlint-cli2
 
-# Or local to project
+# Or local to project (if prompted)
 npm install --save-dev markdownlint-cli2
 ```
 
@@ -129,7 +129,7 @@ The plugin provides a unified slash command for markdown linting:
 **Command Format:**
 
 ```bash
-/mdlinter [mode] [scope]
+/markdown-linter-fixer:mdlinter [mode] [scope]
 ```
 
 **Arguments:**
@@ -144,25 +144,25 @@ The plugin provides a unified slash command for markdown linting:
 
 ```bash
 # Check all files (default mode)
-/mdlinter
+/markdown-linter-fixer:mdlinter
 
 # Explicitly check all files
-/mdlinter check
+/markdown-linter-fixer:mdlinter check
 
 # Fix all files
-/mdlinter fix
+/markdown-linter-fixer:mdlinter fix
 
 # Check only README.md (default mode)
-/mdlinter README.md
+/markdown-linter-fixer:mdlinter README.md
 
 # Explicitly check only README.md
-/mdlinter check README.md
+/markdown-linter-fixer:mdlinter check README.md
 
 # Fix files in docs folder
-/mdlinter fix docs/
+/markdown-linter-fixer:mdlinter fix docs/
 
 # Check multiple specific files
-/mdlinter check README.md CONTRIBUTING.md
+/markdown-linter-fixer:mdlinter check README.md CONTRIBUTING.md
 ```
 
 The check mode is useful for CI/CD or pre-commit checks, while fix mode runs the complete workflow to resolve all issues. For safety, the command always defaults to check mode when mode is not specified.
@@ -400,6 +400,6 @@ If you encounter problems:
 
 ---
 
-**Version**: 1.5.3
+**Version**: 1.5.4
 **Last Updated**: October 26, 2025
 **Compatibility**: Claude Code (Sonnet 4+), VS Code (GitHub Copilot with custom chat modes)
