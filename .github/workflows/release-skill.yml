@@ -142,11 +142,111 @@ jobs:
           tag_name: ${{ github.event.release.tag_name || steps.get_version.outputs.version_tag }}
           name: ${{ github.event.release.name || steps.get_version.outputs.version_tag }}
           body: |
-            Release of Markdown Linter Fixer Skill version ${{ steps.get_version.outputs.version }}
+            # Markdown Linter Fixer Skill v${{ steps.get_version.outputs.version }}
             
-            Download `markdown-linter-fixer-skill.zip` and upload to Claude.ai Settings > Capabilities.
+            ## Quick Start
             
-            See `SKILL_INSTALLATION.md` artifact for detailed installation instructions.
+            1. Download `markdown-linter-fixer-skill.zip` from the Assets section below
+            2. Go to [Claude.ai](https://claude.ai/) → Settings → Capabilities
+            3. Click **Upload Skill** and select the downloaded zip file
+            4. Enable the skill and ensure **Code Execution** is enabled
+            5. Start using it by mentioning markdown linting tasks!
+            
+            ---
+            
+            ## What This Skill Does
+            
+            This skill enables Claude to systematically fix linting issues in markdown files using markdownlint-cli2. It provides structured workflows to diagnose, fix, and verify markdown formatting issues with special attention to ordered list numbering (MD029) errors.
+            
+            ## Detailed Installation Instructions
+            
+            ### Step 1: Download the Skill
+            
+            Download `markdown-linter-fixer-skill.zip` from the **Assets** section below.
+            
+            ### Step 2: Upload to Claude.ai
+            
+            1. Go to [Claude.ai](https://claude.ai/)
+            2. Click on your profile icon in the bottom left
+            3. Select **Settings**
+            4. Navigate to **Capabilities** section
+            5. Click **Upload Skill**
+            6. Select the downloaded `markdown-linter-fixer-skill.zip` file
+            7. Wait for the upload to complete
+            
+            ### Step 3: Enable the Skill and Code Execution
+            
+            After uploading:
+            
+            1. The skill should appear in Settings > Capabilities
+            2. Make sure the skill is enabled (toggled on)
+            3. Ensure **Code Execution** is also enabled in Capabilities
+            4. Skills and code execution are available on Pro, Max, Team, and Enterprise plans
+            
+            ### Step 4: Start Using the Skill
+            
+            The skill activates automatically when you mention markdown linting tasks. Try:
+            
+            - "Fix all markdown linting errors in my project"
+            - "Scan markdown files for issues"
+            - "I have ordered list numbering problems in my markdown files"
+            - "Set up markdown linting for my documentation"
+            
+            ## What's Included
+            
+            The skill package contains:
+            
+            - `SKILL.md` - Main skill instructions with 6-phase workflow
+            - `references/MD029-Fix-Guide.md` - Comprehensive guide for fixing ordered list indentation issues
+            - `references/MD036-Guide.md` - Style guide for avoiding emphasis-as-heading errors
+            
+            ## How It Works
+            
+            The skill automatically handles all dependencies. When you first use it, Claude will:
+            
+            1. Check if `markdownlint-cli2` is available
+            2. Guide you through installation if needed
+            3. Create configuration files if they don't exist
+            4. Run the complete linting and fixing workflow
+            
+            No manual setup required!
+            
+            ## Skill Features
+            
+            - **Environment Setup**: Verifies tools and configuration
+            - **Diagnostic Assessment**: Scans files and documents issues
+            - **Issue Analysis**: Categorizes errors by type
+            - **Automatic Fixes**: Applies auto-fix for correctable issues
+            - **Manual Fix Guidance**: Detailed guides for remaining corrections
+            - **Verification**: Confirms completion and generates reports
+            
+            ## Important Notes
+            
+            - Custom Skills on Claude.ai are **individual to each user**
+            - Skills are **not shared organization-wide** on Claude.ai
+            - Each team member must upload the skill separately
+            - Skills run in a code execution container with no network access
+            - The skill will only modify files with your explicit permission
+            
+            ## Security
+            
+            This skill:
+            - Only reads/writes markdown files
+            - Uses standard npm package (markdownlint-cli2)
+            - Requires explicit permission for file modifications
+            - Provides clear explanations before executing commands
+            - Makes no external network calls (except npm installation)
+            
+            ## Support
+            
+            For issues or questions:
+            - [GitHub Issues](https://github.com/s2005/markdown-linter-fixer-skill/issues)
+            - [GitHub Discussions](https://github.com/s2005/markdown-linter-fixer-skill/discussions)
+            
+            ## Additional Information
+            
+            - **Repository**: https://github.com/s2005/markdown-linter-fixer-skill
+            - **License**: MIT
           draft: false
           prerelease: false
         env:
